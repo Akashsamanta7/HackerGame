@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Game</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    button {
+      background-color: limegreen;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-family: monospace;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .instructions {
+      display: none;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Hacker Game</h1>
+  <button onclick="showInstructions()">Start</button>
+
+  <div class="instructions" id="instructions">
+    <h2>Instructions</h2>
+    <ul>
+      <li>Level 1: Guess the word based on the riddle.</li>
+      <li>Level 2: Crack the 4-digit PIN using the hints provided.</li>
+      <li>Level 3: Decode the Morse code message.</li>
+      <li>Level 4: Solve the pattern recognition puzzle.</li>
+      <li>Level 5: Combine elements from previous levels to complete the final challenge.</li>
+    </ul>
+    <p><strong>Tip:</strong> Remember your answers from Levels 1-4 for Level 5!</p>
+    <button onclick="startGame()">Continue</button>
+  </div>
+
+  <script>
+    function showInstructions() {
+      document.getElementById('instructions').style.display = 'block';
+    }
+    function startGame() {
+      window.location.href = 'level1.html'; // Redirect to Level 1
+    }
+  </script>
+</body>
+</html>

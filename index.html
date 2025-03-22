@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Game - Login</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    input {
+      background-color: black;
+      color: limegreen;
+      border: 1px solid limegreen;
+      padding: 10px;
+      font-family: monospace;
+      margin: 10px;
+    }
+    button {
+      background-color: limegreen;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-family: monospace;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      color: red;
+    }
+    .password-container {
+      position: relative;
+      display: inline-block;
+    }
+    .password-container input {
+      padding-right: 40px; /* Space for the eye button */
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: limegreen;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hacker Game - Login</h1>
+  <p>Enter your username and password to access the game:</p>
+  <input type="text" id="username" placeholder="Username" autocomplete="off"><br>
+  <div class="password-container">
+    <input type="password" id="password" placeholder="Password" autocomplete="off">
+    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+  </div><br>
+  <button onclick="login()">Login</button>
+  <p class="result" id="result"></p>
+
+  <script>
+    // Predefined user credentials
+    const users = {
+      "Akash": "9830494XXX",
+      "Avinandan": "9903830XXX",
+      "Random123": "qwertyXXXX"
+    };
+
+    // Login function
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (users[username] && users[username] === password) {
+        window.location.href = 'start.html'; // Redirect to the game
+      } else {
+        document.getElementById('result').textContent = 'Invalid username or password!';
+      }
+    }
+
+    // Toggle password visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text'; // Show password
+      } else {
+        passwordInput.type = 'password'; // Hide password
+      }
+    }
+  </script>
+</body>
+</html>

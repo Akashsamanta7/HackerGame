@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Game - Level 1</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    input {
+      background-color: black;
+      color: limegreen;
+      border: 1px solid limegreen;
+      padding: 10px;
+      font-family: monospace;
+    }
+    button {
+      background-color: limegreen;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-family: monospace;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .hint {
+      margin-top: 10px;
+      font-style: italic;
+      color: yellow;
+    }
+    .secret-message {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 2px solid limegreen;
+      background-color: #111;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Level 1: Crack the Password</h1>
+  <p>Riddle: I am a hidden part of the internet, where secrets are traded and anonymity reigns. What am I?</p>
+  <p class="hint">Hint 1: I am not accessible through regular search engines.</p>
+  <p class="hint">Hint 2: I am often associated with illegal activities, but not all of me is bad.</p>
+  <p class="hint">Hint 3: My name starts with "D" and ends with "b".</p>
+  <input type="text" id="passwordInput" placeholder="Enter password" autocomplete="off">
+  <button onclick="checkPassword()">Submit</button>
+  <p class="result" id="result"></p>
+
+  <div class="secret-message" id="secretMessage">
+    <h2>Secret Message</h2>
+    <p>Congratulations! You have unlocked a secret about the hacker group's hierarchy:</p>
+    <ul>
+      <li>★ = Leader (highest rank)</li>
+      <li>● = Hacker</li>
+      <li>▲ = Spy</li>
+      <li>■ = Insider (lowest rank)</li>
+    </ul>
+    <p>Remember this hierarchy—it will be useful in a future level!</p>
+    <button onclick="continueToLevel2()">Continue</button>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value.toLowerCase();
+      if (password === 'darkweb') {
+        document.getElementById('result').textContent = 'Access Granted!';
+        document.getElementById('secretMessage').style.display = 'block';
+      } else {
+        document.getElementById('result').textContent = 'Access Denied! Try again.';
+      }
+    }
+
+    function continueToLevel2() {
+      window.location.href = 'level2.html'; // Redirect to Level 2
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Game - Level 4</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    .symbols-container {
+      display: grid;
+      grid-template-columns: repeat(4, 50px);
+      gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+    .symbol {
+      width: 50px;
+      height: 50px;
+      background-color: #333;
+      border: 2px solid limegreen;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: grab;
+    }
+    .slots-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px auto;
+    }
+    .slot {
+      width: 50px;
+      height: 50px;
+      background-color: #333;
+      border: 2px dashed limegreen;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    button {
+      background-color: limegreen;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-family: monospace;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .hint {
+      margin-top: 10px;
+      font-style: italic;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h1>Level 4: Advanced Pattern Recognition</h1>
+  <p>Arrange the symbols in the correct order:</p>
+  <p class="hint">Hint: The symbols represent the hierarchy of a hacker group: Leader, Hacker, Spy, and Insider. Arrange them from highest to lowest rank.</p>
+
+  <div class="symbols-container">
+    <div class="symbol" draggable="true" data-symbol="★">★</div>
+    <div class="symbol" draggable="true" data-symbol="✖">✖</div>
+    <div class="symbol" draggable="true" data-symbol="◆">◆</div>
+    <div class="symbol" draggable="true" data-symbol="❖">❖</div>
+    <div class="symbol" draggable="true" data-symbol="◈">◈</div>
+    <div class="symbol" draggable="true" data-symbol="■">■</div>
+    <div class="symbol" draggable="true" data-symbol="⬟">⬟</div>
+    <div class="symbol" draggable="true" data-symbol="⬢">⬢</div>
+    <div class="symbol" draggable="true" data-symbol="▲">▲</div>
+    <div class="symbol" draggable="true" data-symbol="⬣">⬣</div>
+    <div class="symbol" draggable="true" data-symbol="⬤">⬤</div>
+    <div class="symbol" draggable="true" data-symbol="●">●</div>
+  </div>
+
+  <div class="slots-container">
+    <div class="slot" data-slot="1"></div>
+    <div class="slot" data-slot="2"></div>
+    <div class="slot" data-slot="3"></div>
+    <div class="slot" data-slot="4"></div>
+  </div>
+
+  <button onclick="checkOrder()">Confirm</button>
+  <p class="result" id="result"></p>
+
+  <script>
+    const symbols = document.querySelectorAll('.symbol');
+    const slots = document.querySelectorAll('.slot');
+    let draggedSymbol = null;
+
+    // Add event listeners for drag-and-drop
+    symbols.forEach(symbol => {
+      symbol.addEventListener('dragstart', () => {
+        draggedSymbol = symbol;
+      });
+    });
+
+    slots.forEach(slot => {
+      slot.addEventListener('dragover', (e) => {
+        e.preventDefault();
+      });
+      slot.addEventListener('drop', () => {
+        if (draggedSymbol) {
+          slot.textContent = draggedSymbol.textContent;
+          slot.setAttribute('data-symbol', draggedSymbol.getAttribute('data-symbol'));
+          draggedSymbol = null;
+        }
+      });
+    });
+
+    // Check the order of symbols
+    function checkOrder() {
+      const correctOrder = ['★', '●', '▲', '■'];
+      const playerOrder = Array.from(slots).map(slot => slot.getAttribute('data-symbol'));
+
+      if (JSON.stringify(playerOrder) === JSON.stringify(correctOrder)) {
+        document.getElementById('result').textContent = 'Access Granted! Loading Level 5...';
+        setTimeout(() => {
+          window.location.href = 'level5.html'; // Redirect to Level 5
+        }, 2000); // 2-second delay before redirecting
+      } else {
+        document.getElementById('result').textContent = 'Access Denied! Try again.';
+      }
+    }
+  </script>
+</body>
+</html>

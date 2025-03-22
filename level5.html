@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Game - Level 5</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    .morse-code {
+      margin: 20px auto;
+      font-size: 24px;
+      letter-spacing: 5px;
+    }
+    input {
+      background-color: black;
+      color: limegreen;
+      border: 1px solid limegreen;
+      padding: 10px;
+      font-family: monospace;
+    }
+    button {
+      background-color: limegreen;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-family: monospace;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .cheat-sheet {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hidden {
+      display: none;
+    }
+    .hint {
+      margin-top: 10px;
+      font-style: italic;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <h1>Level 5: Multi-Step Challenge</h1>
+  <p>Decode the Morse code message to reveal the final challenge:</p>
+  <p class="morse-code">.-. . .- -.. -.--</p>
+  <input type="text" id="morseInput" placeholder="Enter decoded message" autocomplete="off">
+  <button onclick="decodeMorse()">Decode</button>
+  <p class="result" id="morseResult"></p>
+
+  <div id="riddleSection" class="hidden">
+    <p>Riddle: I am a tool used by hackers to hide their identity. I am often associated with layers of encryption. What am I?</p>
+    <p class="hint">Hint 1: I am an acronym.</p>
+    <p class="hint">Hint 2: I create a secure connection over the internet.</p>
+    <p class="hint">Hint 3: I am often used to access restricted content.</p>
+    <input type="text" id="riddleInput" placeholder="Enter riddle answer" autocomplete="off">
+    <button onclick="solveRiddle()">Submit</button>
+    <p class="result" id="riddleResult"></p>
+  </div>
+
+  <div id="pinSection" class="hidden">
+    <p>The key lies in your past success. Enter the 4-digit PIN to unlock the final password:</p>
+    <input type="text" id="pinInput" placeholder="Enter 4-digit PIN" maxlength="4" autocomplete="off">
+    <button onclick="checkPin()">Unlock</button>
+    <p class="result" id="pinResult"></p>
+  </div>
+
+  <div class="cheat-sheet">
+    <h3>Morse Code Cheat Sheet</h3>
+    <p>A: .-</p>
+    <p>B: -...</p>
+    <p>C: -.-.</p>
+    <p>D: -..</p>
+    <p>E: .</p>
+    <p>F: ..-.</p>
+    <p>G: --.</p>
+    <p>H: ....</p>
+    <p>I: ..</p>
+    <p>J: .---</p>
+    <p>K: -.-</p>
+    <p>L: .-..</p>
+    <p>M: --</p>
+    <p>N: -.</p>
+    <p>O: ---</p>
+    <p>P: .--.</p>
+    <p>Q: --.-</p>
+    <p>R: .-.</p>
+    <p>S: ...</p>
+    <p>T: -</p>
+    <p>U: ..-</p>
+    <p>V: ...-</p>
+    <p>W: .--</p>
+    <p>X: -..-</p>
+    <p>Y: -.--</p>
+    <p>Z: --..</p>
+  </div>
+
+  <script>
+    // Step 1: Decode Morse code
+    function decodeMorse() {
+      const morseInput = document.getElementById('morseInput').value.toUpperCase();
+      if (morseInput === 'READY') {
+        document.getElementById('morseResult').textContent = 'Decoded: READY';
+        document.getElementById('riddleSection').style.display = 'block';
+      } else {
+        document.getElementById('morseResult').textContent = 'Incorrect! Try again.';
+      }
+    }
+
+    // Step 2: Solve riddle
+    function solveRiddle() {
+      const riddleInput = document.getElementById('riddleInput').value.toUpperCase();
+      if (riddleInput === 'VPN') {
+        document.getElementById('riddleResult').textContent = 'Correct! The key lies in your past success.';
+        document.getElementById('pinSection').style.display = 'block';
+      } else {
+        document.getElementById('riddleResult').textContent = 'Incorrect! Try again.';
+      }
+    }
+
+    // Step 3: Check PIN
+    function checkPin() {
+      const pinInput = document.getElementById('pinInput').value;
+      if (pinInput === '4286') {
+        document.getElementById('pinResult').textContent = 'Access Granted! Loading...';
+        setTimeout(() => {
+          window.location.href = 'reward.html'; // Redirect to Final Reward
+        }, 2000); // 2-second delay before redirecting
+      } else {
+        document.getElementById('pinResult').textContent = 'Access Denied! Try again.';
+      }
+    }
+  </script>
+</body>
+</html>

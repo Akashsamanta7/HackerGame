@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Game - Level 3</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    .morse-code {
+      margin: 20px auto;
+      font-size: 24px;
+      letter-spacing: 5px;
+    }
+    input {
+      background-color: black;
+      color: limegreen;
+      border: 1px solid limegreen;
+      padding: 10px;
+      font-family: monospace;
+    }
+    button {
+      background-color: limegreen;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-family: monospace;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .cheat-sheet {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Level 3: Decode the Morse Code</h1>
+  <p>Decode the following Morse code message to reveal the password:</p>
+  <p class="morse-code">-.-. -.-- -... . .-.</p>
+  <input type="text" id="passwordInput" placeholder="Enter decoded password" autocomplete="off">
+  <button onclick="checkPassword()">Submit</button>
+  <p class="result" id="result"></p>
+
+  <div class="cheat-sheet">
+    <h3>Morse Code Cheat Sheet</h3>
+    <p>A: .-</p>
+    <p>B: -...</p>
+    <p>C: -.-.</p>
+    <p>D: -..</p>
+    <p>E: .</p>
+    <p>F: ..-.</p>
+    <p>G: --.</p>
+    <p>H: ....</p>
+    <p>I: ..</p>
+    <p>J: .---</p>
+    <p>K: -.-</p>
+    <p>L: .-..</p>
+    <p>M: --</p>
+    <p>N: -.</p>
+    <p>O: ---</p>
+    <p>P: .--.</p>
+    <p>Q: --.-</p>
+    <p>R: .-.</p>
+    <p>S: ...</p>
+    <p>T: -</p>
+    <p>U: ..-</p>
+    <p>V: ...-</p>
+    <p>W: .--</p>
+    <p>X: -..-</p>
+    <p>Y: -.--</p>
+    <p>Z: --..</p>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value.toUpperCase();
+      if (password === 'CYBER') {
+        document.getElementById('result').textContent = 'Access Granted! Loading Level 4...';
+        setTimeout(() => {
+          window.location.href = 'level4.html'; // Redirect to Level 4
+        }, 2000); // 2-second delay before redirecting
+      } else {
+        document.getElementById('result').textContent = 'Access Denied! Try again.';
+      }
+    }
+  </script>
+</body>
+</html>
